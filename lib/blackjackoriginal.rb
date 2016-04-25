@@ -32,30 +32,21 @@ def initial_round
   # code #initial_round here
   x=deal_card
   y=deal_card
-  display_card_total(x+y)
+  puts "Your cards add up to #{x + y}"
   return x+y
 end
 
-def invalid_command
-  puts "Please enter a valid command."
-  # code invalid_command here
-end
-
 def hit?(num)
-        prompt_user
+  prompt_user
   input = get_user_input
-if  input=="h"
-    num + deal_card
-  elsif input == "s"
-  num
-else 
-  invalid_command
-end
-  
+  input == "h" ? num + deal_card : num
 end
   # code hit? here
 
 
+def invalid_command
+  # code invalid_command here
+end
 
 #####################################################
 # get every test to pass before coding runner below #
@@ -65,14 +56,9 @@ def runner
   welcome
   x = initial_round
   until x > 21 
-    y = hit?(x)
-    until y != x && y.is_a?(Fixnum)
-      y=hit?(x)
-    end 
-    x=y
+    x = hit?(x)
     display_card_total(x)
   end
   end_game(x)
   # code runner here
 end
-    
